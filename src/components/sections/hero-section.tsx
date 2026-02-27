@@ -1,29 +1,34 @@
 import { personalData, education } from "@/lib/data";
 import { MapPin, GraduationCap, Mail } from "lucide-react";
 import { AnimatedSection } from "../animated-section";
-import Image from "next/image";
 
 export function HeroSection() {
   const topEducation = education[0];
+  const basePath = '/Portfolio-Website';
 
   return (
     <AnimatedSection
       id="hero"
-      className="w-full max-w-5xl flex flex-col md:flex-row items-center text-center md:text-left justify-center min-h-screen gap-8 md:gap-16 px-4"
+      className="w-full max-w-5xl flex flex-col md:flex-row items-center text-center md:text-left justify-center min-h-screen gap-12 md:gap-16 px-4 py-32"
     >
-      <div className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
+      <div className="relative w-56 h-56 md:w-64 md:h-64 flex-shrink-0">
         <div className="absolute inset-0 bg-primary/20 rounded-full rotate-6 -z-10 animate-pulse" />
-        <Image
-          src="/image/me.png"
+        <img
+          src={`${basePath}/image/me.png`}
           alt={personalData.name}
-          width={256}
-          height={256}
-          priority
-          className="rounded-full object-cover shadow-2xl border-4 border-background w-full h-full relative z-10"
+          className="rounded-full object-cover shadow-2xl border-4 border-background w-full h-full relative z-10 bg-muted"
+          onError={(e) => {
+            console.error("Profile picture failed to load from:", e.currentTarget.src);
+            // Fallback for local development
+            if (!e.currentTarget.src.includes('localhost') && e.currentTarget.getAttribute('data-tried-local') !== 'true') {
+              e.currentTarget.setAttribute('data-tried-local', 'true');
+              e.currentTarget.src = "/image/me.png";
+            }
+          }}
         />
       </div>
 
-      <div className="flex flex-col items-center md:items-start max-w-xl">
+      <div className="flex flex-col items-center md:items-start max-w-xl z-20">
         <h1 className="text-4xl md:text-6xl font-headline font-bold tracking-tighter mb-4 bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent">
           {personalData.name}
         </h1>
