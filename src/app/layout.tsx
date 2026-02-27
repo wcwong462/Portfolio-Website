@@ -54,7 +54,7 @@ export default function RootLayout({
           <Header />
           <ScrollIndicator sections={sections} />
           
-          <div className="relative z-0 min-h-screen bg-white/10 dark:bg-slate-950/20 backdrop-blur-[1px] w-full max-w-5xl mx-auto border-x border-primary/5 shadow-2xl transition-all duration-500">
+          <div className="relative z-0 min-h-screen bg-white/20 dark:bg-slate-950/30 backdrop-blur-md w-full max-w-6xl mx-auto border-x border-primary/10 shadow-2xl transition-all duration-500">
             {children}
           </div>
           
