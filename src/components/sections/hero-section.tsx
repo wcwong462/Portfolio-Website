@@ -1,6 +1,7 @@
 import { personalData, education } from "@/lib/data";
 import { MapPin, GraduationCap, Mail } from "lucide-react";
 import { AnimatedSection } from "../animated-section";
+import Image from "next/image";
 
 export function HeroSection() {
   const topEducation = education[0];
@@ -12,14 +13,16 @@ export function HeroSection() {
     >
       <div className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
         <div className="absolute inset-0 bg-primary/20 rounded-full rotate-6 -z-10 animate-pulse" />
-        <img
+        <Image
           src="/image/me.png"
           alt={personalData.name}
+          width={256}
+          height={256}
           className="rounded-full object-cover shadow-2xl border-4 border-background w-full h-full relative z-10"
           onError={(e) => {
             console.error("Profile picture failed to load");
-            e.currentTarget.src = "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
           }}
+          priority
         />
       </div>
 

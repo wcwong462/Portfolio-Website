@@ -67,15 +67,17 @@ export const QuantBackground: React.FC = () => {
 
     const particles: Particle[] = [];
     const PARTICLE_COUNT = 35; // Reduced from 70
+    const particles: Particle[] = [];
+    const PARTICLE_COUNT = 15; // Drastically reduced for performance
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
-        size: Math.random() * 4 + 2,
-        type: Math.random() > 0.7 ? "number" : (Math.random() > 0.85 ? "signal" : "dot"),
-        value: (Math.random() * 100).toFixed(2),
+        vx: (Math.random() - 0.5) * 0.3, // Slower movement
+        vy: (Math.random() - 0.5) * 0.3, 
+        size: Math.random() * 2 + 1, // Smaller particles
+        type: Math.random() > 0.9 ? "number" : "dot",
+        value: (Math.random() * 100).toFixed(0),
       });
     }
 
@@ -84,13 +86,13 @@ export const QuantBackground: React.FC = () => {
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Reduced Frequency of new packets
-      if (Math.random() > 0.97) {
+      // Minimal Frequency of new packets (even fewer for performance)
+      if (Math.random() > 0.99) {
         binaryPackets.push({
           x: Math.floor(Math.random() * (width / GRID_SIZE)) * GRID_SIZE + 10,
           y: -20,
           val: Math.random() > 0.5 ? "1" : "0",
-          speed: Math.random() * 2 + 1,
+          speed: Math.random() * 1 + 0.5,
         });
       }
 
