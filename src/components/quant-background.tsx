@@ -36,8 +36,8 @@ export const QuantBackground: React.FC = () => {
     window.addEventListener('resize', resize);
     resize();
 
-    // Configuration
-    const GRID_SIZE = 50;
+    // Configuration (Optimized for performance)
+    const GRID_SIZE = 80;
     
     // Theme-based colors
     const isDark = theme === 'dark';
@@ -46,11 +46,11 @@ export const QuantBackground: React.FC = () => {
 
     const colors = {
       grid: `rgba(${baseColor}, 0)`, 
-      line: `rgba(${baseColor}, ${isDark ? "0.4" : "0.55"})`, 
-      particle: `rgba(${baseColor}, ${isDark ? "0.7" : "0.8"})`, 
-      text: `rgba(${baseColor}, ${isDark ? "0.8" : "0.9"})`,     
-      binary: `rgba(${baseColor}, ${isDark ? "0.4" : "0.5"})`,  
-      accent: `rgba(${accentColor}, ${isDark ? "0.7" : "0.8"})`,   
+      line: `rgba(${baseColor}, ${isDark ? "0.2" : "0.3"})`, 
+      particle: `rgba(${baseColor}, ${isDark ? "0.4" : "0.5"})`, 
+      text: `rgba(${baseColor}, ${isDark ? "0.5" : "0.6"})`,     
+      binary: `rgba(${baseColor}, ${isDark ? "0.2" : "0.3"})`,  
+      accent: `rgba(${accentColor}, ${isDark ? "0.4" : "0.5"})`,   
       scan: `rgba(${baseColor}, 0)`,
     };
 
@@ -66,7 +66,8 @@ export const QuantBackground: React.FC = () => {
     }
 
     const particles: Particle[] = [];
-    for (let i = 0; i < 70; i++) {
+    const PARTICLE_COUNT = 35; // Reduced from 70
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -83,12 +84,13 @@ export const QuantBackground: React.FC = () => {
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
 
-      if (Math.random() > 0.92) {
+      // Reduced Frequency of new packets
+      if (Math.random() > 0.97) {
         binaryPackets.push({
           x: Math.floor(Math.random() * (width / GRID_SIZE)) * GRID_SIZE + 10,
           y: -20,
           val: Math.random() > 0.5 ? "1" : "0",
-          speed: Math.random() * 3 + 2,
+          speed: Math.random() * 2 + 1,
         });
       }
 
