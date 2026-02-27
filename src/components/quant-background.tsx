@@ -66,8 +66,6 @@ export const QuantBackground: React.FC = () => {
     }
 
     const particles: Particle[] = [];
-    const PARTICLE_COUNT = 35; // Reduced from 70
-    const particles: Particle[] = [];
     const PARTICLE_COUNT = 15; // Drastically reduced for performance
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
