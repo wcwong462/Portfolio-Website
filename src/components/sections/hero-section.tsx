@@ -45,6 +45,9 @@ export function HeroSection() {
           </blockquote>
           <figcaption className="mt-2 text-xs md:text-sm text-muted-foreground">— Warren Buffett</figcaption>
         </figure>
+        <p className="mt-8 text-[10px] text-muted-foreground/30 uppercase tracking-widest">
+          Version 2.1 • Quantum Portfolio
+        </p>
       </div>
     </AnimatedSection>
   );

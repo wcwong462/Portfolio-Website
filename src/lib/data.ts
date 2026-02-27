@@ -6,7 +6,6 @@ export const personalData = {
   title: "Quantitative Finance & Computer Science",
   location: "Hong Kong",
   email: "wcwong462.samuel@gmail.com",
-  profilePicture: "/image/me.png",
   about:
     `I bridge the gap between complex financial theory and high-performance execution. My experience is built at the intersection of Algorithmic Market-Making, Risk Analytics, and Quantitative Research.
 From optimizing trading execution to modelling volatility and factor anomalies, I love translating data into conviction.
